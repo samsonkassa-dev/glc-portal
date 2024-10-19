@@ -95,7 +95,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             name="fullName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                   Full Name <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
@@ -115,7 +115,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             name="phoneNumber"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                   Phone Number <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
@@ -135,7 +135,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             name="city"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                   City <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
@@ -155,7 +155,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             name="subCity"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                   Sub City
                 </FormLabel>
                 <FormControl>
@@ -177,7 +177,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             name="educationStatus"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                   Education Status 
                 </FormLabel>
                 <Select
@@ -207,7 +207,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             name="workStatus"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                   Work Status
                 </FormLabel>
                 <Select
@@ -240,7 +240,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 name="placeOfSchool"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-700 font-semibold text-lg">
+                    <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                       Where do you learn?
                     </FormLabel>
                     <FormControl>
@@ -259,7 +259,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 name="fieldOfStudy"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-700 font-semibold text-lg">
+                    <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                       What are you studying?
                     </FormLabel>
                     <FormControl>
@@ -281,7 +281,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 name="jobField"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-700 font-semibold text-lg">
+                    <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                       What do you work?
                     </FormLabel>
                     <FormControl>
@@ -300,7 +300,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 name="companyName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-700 font-semibold text-lg">
+                    <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                       Where do you work?
                     </FormLabel>
                     <FormControl>
@@ -324,7 +324,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             name="placeOfWork"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
                   Place of Work?
                 </FormLabel>
                 <FormControl>

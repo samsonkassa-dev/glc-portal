@@ -132,7 +132,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
               name="savedDate"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-700 font-semibold text-lg">
+                  <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
                     When did you get saved?{" "}
                     <span className="text-red-500">*</span>
                   </FormLabel>
@@ -152,7 +152,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
               name="savedChurch"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-700 font-semibold text-lg">
+                  <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
                     Which Church did you get saved?{" "}
                     <span className="text-red-500">*</span>
                   </FormLabel>
@@ -168,7 +168,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
               )}
             />
           </div>
-          <h2 className="text-lg pt-4 font-semibold text-gray-700">
+          <h2 className="md:text-lg text-sm pt-4 font-semibold text-gray-700">
             Who invited you to GLC?
           </h2>{" "}
           <div className="pl-4">
@@ -178,7 +178,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                 name="inviterFullName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-700 font-semibold text-md">
+                    <FormLabel className="text-gray-700 font-semibold md:text-md text-sm">
                       Full Name 
                     </FormLabel>
                     <FormControl>
@@ -197,7 +197,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                 name="inviterPhoneNumber"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="text-gray-700 font-semibold text-md">
+                    <FormLabel className="text-gray-700 font-semibold md:text-md text-sm">
                       Phone Number 
                     </FormLabel>
                     <FormControl>
@@ -217,7 +217,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
               name="invitationSource"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-gray-700 font-semibold text-md ">
+                  <FormLabel className="text-gray-700 font-semibold md:text-md text-sm">
                     Invitation Source
                   </FormLabel>
                   <FormControl>
@@ -265,7 +265,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                   name="doesServe"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-gray-700 font-semibold text-lg">
+                      <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
                         Do you serve in any departments?{" "}
                         <span className="text-red-500">*</span>
                       </FormLabel>
@@ -314,7 +314,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                 name="trainings"
                 render={() => (
                   <FormItem>
-                    <FormLabel className="text-gray-700 font-semibold text-lg">
+                    <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
                       Which trainings have you attended?{" "}
                       <span className="text-red-500">*</span>
                     </FormLabel>
@@ -367,7 +367,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                 name="department"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel className="text-gray-700 font-semibold text-lg">
+                    <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
                       Which departments do you serve?{" "}
                       <span className="text-red-500">*</span>
                     </FormLabel>

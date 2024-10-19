@@ -117,7 +117,7 @@ const churchInformation2 = forwardRef<{ validateAndSave: () => Promise<boolean> 
             name="maritalStatus"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-md">
                   Marital Status
                 </FormLabel>
                 <FormControl>
@@ -151,7 +151,7 @@ const churchInformation2 = forwardRef<{ validateAndSave: () => Promise<boolean> 
             name="ministryExperience"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-md">
                   Your Experience on Ministry before?
                 </FormLabel>
                 <FormControl>
@@ -171,7 +171,7 @@ const churchInformation2 = forwardRef<{ validateAndSave: () => Promise<boolean> 
           name="comments"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-gray-700 font-semibold text-lg">
+              <FormLabel className="text-gray-700 font-semibold sm:text-lg text-md">
                 Comments
               </FormLabel>
               <FormControl>
@@ -190,7 +190,7 @@ const churchInformation2 = forwardRef<{ validateAndSave: () => Promise<boolean> 
           name="childrenAttendChurch"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-gray-700 font-semibold text-lg">
+              <FormLabel className="text-gray-700 font-semibold sm:text-lg text-md">
                 Does your child come to church?
               </FormLabel>
               <FormControl>
@@ -228,7 +228,7 @@ const churchInformation2 = forwardRef<{ validateAndSave: () => Promise<boolean> 
             name="numberOfChildren"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-gray-700 font-semibold text-lg">
+                <FormLabel className="text-gray-700 font-semibold sm:text-lg text-md">
                   Number of Children
                 </FormLabel>
                 <FormControl>
@@ -351,7 +351,7 @@ const churchInformation2 = forwardRef<{ validateAndSave: () => Promise<boolean> 
           ))}
 
         <FormItem>
-          <FormLabel className="text-gray-700 font-semibold text-lg">
+          <FormLabel className="text-gray-700 font-semibold sm:text-lg text-md">
             Upload your Image
           </FormLabel>
           <div className="flex flex-col p-4  sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4">
