@@ -378,7 +378,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                             variant="outline"
                             role="combobox"
                             className={cn(
-                              "w-[50%] justify-between",
+                              "md:w-[50%] w-full justify-between",
                               !field.value || field.value.length === 0
                                 ? "text-muted-foreground"
                                 : ""
