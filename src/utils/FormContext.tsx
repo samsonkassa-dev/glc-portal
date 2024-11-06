@@ -3,29 +3,28 @@
 
 "use client"
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { FormStepData } from '@/types/form';
 
 type FormContextType = {
-  formData: any;
-  updateFormData: (step: number, data: any) => void;
+  formData: Partial<FormStepData>;
+  updateFormData: (step: keyof FormStepData, data: FormStepData[keyof FormStepData]) => void;
 };
 
 const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export const FormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [formData, setFormData] = useState<any>({});
+  const [formData, setFormData] = useState<Partial<FormStepData>>({});
 
   useEffect(() => {
-    // Load data from localStorage on initial render
     const savedData = localStorage.getItem('formData');
     if (savedData) {
       setFormData(JSON.parse(savedData));
     }
   }, []);
 
-  const updateFormData = (step: number, data: any) => {
-    setFormData((prevData: any) => {
+  const updateFormData = (step: keyof FormStepData, data: FormStepData[keyof FormStepData]) => {
+    setFormData((prevData) => {
       const newData = { ...prevData, [step]: data };
-      // Save to localStorage
       localStorage.setItem('formData', JSON.stringify(newData));
       return newData;
     });

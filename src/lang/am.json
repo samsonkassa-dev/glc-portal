@@ -1,0 +1,211 @@
+{
+    "Home": {
+        "welcome": "እንኳን ደህና መጡ",
+        "glorious": "የክብር ህይወት",
+        "church": "ቤተ ክርስቲያን",
+        "portal": "ፖርታል!",
+        "contact": "ለማንኛውም ጥያቄ ቢሮውን ያግኙ",
+        "register": "እዚህ ይመዝገቡ"
+    },
+
+
+    "Form": {
+        "steps": {
+            "1": "መሰረታዊ መረጃ",
+            "2": "ከቤተክርስቲያን ጋር የተዛመደ መረጃ",
+            "3": "ከቤተክርስቲያን ጋር የተዛመደ መረጃ 2",
+            "4": "ተከናውኗል"
+        },
+        "processing": "ምዝገባዎን በማካሄድ ላይ",
+        "success": {
+            "title": "በተሳካ ሁኔታ ተመዝግቧል!",
+            "message": "ቅጹን ስለሞሉ እናመሰግናለን። ምዝገባዎ ደርሷል።"
+        },
+        "buttons": {
+            "back": "ተመለስ",
+            "next": "ቀጣይ",
+            "submit": "ላክ"
+        },
+        "errorMessages": {
+            "validation ": "እባክዎ ያልሟሉ መረጃዎችን ያሟሉ",
+            "submissionError":"ምዝገባዎ አልተሳካም። እባክህ እንደገና ሞክር።",
+            "netError":"እባክዎ የኢንተርኔት ግንኙነትዎን ያረጋግጡ እና እንደገና ይሞክሩ።"
+
+        }
+    },
+
+
+    "basicInformation": {
+        "labels": {
+            "fullName": "ሙሉ ስም",
+            "phoneNumber": "ስልክ ቁጥር",
+            "city": "የመኖሪያ ከተማዎ",
+            "subCity": "ክፍለ ከተማ",
+            "educationStatus": "የትምህርት ደረጃ",
+            "workStatus": "የስራ ሁኔታ",
+            "jobField": "ምንድነው የሚሰሩት?",
+            "companyName": "የት ነው የሚሰሩት?",
+            "placeOfWork": "የስራ ቦታ/ ሚሰሩበት ከተማ/ሀገር?",
+            "placeOfSchool": "የት ነው የሚማሩት?",
+            "fieldOfStudy": "ምንድነው እየተማሩ ያሉት?"
+        },
+        "placeholders": {
+            "fullName": "ዳዊት አብርሃም ኖህ",
+            "phoneNumber": "0911223344",
+            "city": "አዲስ አበባ",
+            "subCity": "አቃቂ ቃሊቲ",
+            "placeOfSchool": "አዲስ አበባ ዩኒሸርሲቲ",
+            "fieldOfStudy": "የትምህረቱ መስክ",
+            "jobField": "የመንግስት ሰራተኛ",
+            "placeOfWork": "ክፍለ ከተማ",
+            "educationStatus": "የትምህርት ደረጃ የይምረጡ",
+            "workStatus": "የስራ ሁኔታ የይምረጡ"
+        },
+        "options": {
+            "educationStatus": {
+                "other": " ሌላ",
+                "highSchool": "ሁለተኛ ደረጃ ትምህርት ቤት",
+                "bachelors": "የመጀመሪያ ዲግሪ",
+                "masters": "የማስተርስ ዲግሪ",
+                "phd": "ዶክትሬት"
+            },
+            "workStatus": {
+                "employee": "ሰራተኛ",
+                "selfEmployed": "የግል ስራ",
+                "unemployed": "ለጊዜው ስራ የለኝም",
+                "student": "ተማሪ"
+            }
+        },
+        "errorMessages": {
+            "fullName": "እባክዎን ሙሉ ስም ያስገቡ ",
+            "phoneNumber": "እባክዎን ትክክለኛ ስልክ ቁጥር ያስገቡ",
+            "city":"የመኖሪያ ከተማዎን ያስገቡ"
+        }
+    },
+
+
+    "churchInformation1": {
+        "labels": {
+            "savedDate": "መቼ ነው ጌታን የተቀበሉት? ",
+            "savedChurch": "የት ነው ጌታን የተቀበሉት?",
+            "inviterSection": "ወደ ክብር ህይወት ቤተክርስቲያን የጋበዝዎት ማን ነው?",
+            "inviterFullName": "ሙሉ ስም",
+            "inviterPhoneNumber": "ስልክ ቁጥር",
+            "invitationSource": "የግብዣ ምንጭ",
+            "doesServe": "በክብር ህይወት ቤተክርስቲያን ያገለግላሉ?",
+            "trainings": "የትኞቹን ስልጠናዎች ወስደዋል?",
+            "departments": "በየትኞቹ የአገልግሎት ዘርፎች ያገለግላሉ?"
+        },
+        "placeholders": {
+            "savedDate": "መስከረም 10፣ 2005",
+            "savedChurch": "የክብር ህይወት ቤተክርስቲያን",
+            "inviterFullName": "ዳዊት አብርሃም",
+            "inviterPhoneNumber": "0911223344",
+            "chooseDepartment": " የአገልግሎት ክፍል ይምረጡ"
+        },
+        "options": {
+            "source": {
+                "socialMedia": "ሶሻል ሚዲያ",
+                "gospelTV": "ጎስፔል ቲቪ"
+            },
+            "yesNo": {
+                "yes": "አዎ",
+                "no": "አይ"
+            }
+        },
+        "trainings": {
+            "restoration": "ሪስቶሬሽን",
+            "foundationOne": "ፋውንዴሽን 1",
+            "foundationTwo": "ፋውንዴሽን 2",
+            "ministersTraining": "የአገልጋዮች ስልጠና"
+        },
+        "departments": {
+            "it": "አይቲ ቲም",
+            "anakazo": "አናካዞ",
+            "followUp": "ክትትል ቡድን",
+            "foundationTeachers": "የፋውንዴሽን መምህራን",
+            "art": "አርት ሚኒስትሪ",
+            "media": "ሚዲያ እና ሳውንድ",
+            "children": "የልጆች አገልግሎት",
+            "army": "አርሚ ",
+            "usher": "አሸርስ",
+            "zoeOne": "ዞዊ ኳየር አንድ",
+            "zoeTwo": "ዞዊ ኳየር ሁለት",
+            "zoeThree": "ዞዊ ኳየር ሶስት",
+            "zoeFour": "ዞዊ ኳየር አራት",
+            "zoeFive": "ዞዊ ኳየር አምስት",
+            "music": "ሙዚቀኞች",
+            "prayer": "የፀሎት ቡድን",
+            "coordinators": "አስተባባሪዎች",
+            "agape": "አጋፔ የሲዲ እና መጽሀፍት አገልግሎት",
+            "compassion": "የርህራሄ አግልግሎት",
+            "cleaning": "ውበት እና ጽዳት አግልግሎት"
+        },
+        "descriptions": {
+            "departments": "ከአንድ በላይ የአገልግሎት ክፍል መምረጥ ይችላሉ።"
+        },
+        "departmentLabel": {
+            "department": "የአገልግሎት ክፍል",
+            "selected": "መርጠዋል",
+            "s": "",
+            "noDepartment": "የአገልግሎት ክፍል አልተገኘም",
+            "search": "የአገልግሎት ክፍል ፈልግ"
+        },
+        "errorMessages": {
+            "savedDate": "ጌታን ያገኙበትን ቀን/አመት ያስገቡ",
+            "savedChurch": "ጌታን ያገኙበትን ቤተክርስቲያን ያስገቡ",
+            "inviterPhoneNumber": "ትክክለኛ ስልክ ቁጥር ያስገቡ",
+            "doesServe": "እባክዎ በማንኛውም ክፍል ውስጥ የሚያገለግሉ ወይም የማያገለግሉ  ከሆነ ይምረጡ።",
+            "chooseDepartment": " የአገልግሎት ዘርፍ ይምረጡ"
+        }
+    },
+
+
+    "churchInformation2": {
+        "labels": {
+            "maritalStatus": "የጋብቻ ሁኔታ",
+            "ministryExperience": "ከዚህ በፊት በአገልግሎት ያለዎት ልምድ?",
+            "comments": "አስተያየቶች",
+            "childrenAttendChurch": "ልጅዎ ቤተክርስቲያን ይመጣል?",
+            "numberOfChildren": "የልጆች ብዛት",
+            "childFullName": "የልጅዎ  ሙሉ ስም",
+            "childAge": "የልጅዎ እድሜ",
+            "childImage": "የልጅዎ ፎቶ",
+            "userImage": "ፎቶዎን ያስገቡ",
+            "child": "ልጅ",
+            "fullName": "ሙሉ ስም",
+            "age": "እድሜ",
+            "image": "ፎቶ",
+            "upload": "ያስገቡ",
+            "change": "ፎቶ ይቀይሩ"
+        
+        },
+        "options": {
+            "maritalStatus": {
+                "married": "ያገባ/ች",
+                "single": "ያላገባ/ች",
+                "divorced": "የተፋታ/ች",
+                "widow": "መበለት"
+            },
+            "yesNo": {
+                "yes": "አዎ",
+                "no": "አይ"
+            }
+        },
+        "buttons": {
+            "uploadImage": "ፎቶ ያስገቡ",
+            "changeImage": "ፎቶ ይቀይሩ"
+        },
+        "errorMessages": {
+            "nameOfChild": "ሙሉ ስም ያስገቡ",
+            "ageOfChild": "እድሜ ያስገቡ",
+            "childImage": "ፎቶ ያስገቡ",
+            "userImage": "ፎቶዎን ያስገቡ",
+            "numberOfChildren": "please enter the details of your children",
+            "maritalStatus": "Please select your marital status"
+          }
+        
+    }
+
+
+}       

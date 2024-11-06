@@ -37,56 +37,37 @@ import {
 } from "@/components/ui/popover"
 import { useFormContext } from '@/utils/FormContext';
 import { useEffect } from "react"
+import { useTranslations } from 'next-intl';
+import { ChurchInfo1 } from "@/types/form"
 
-const FormSchema = z.object({
-  savedDate: z.string().min(1, { message: "Please enter when you got saved." }),
-  savedChurch: z.string().min(1, { message: "Please enter the church where you got saved." }),
-  inviterFullName: z.string().optional(),
-  inviterPhoneNumber: z.string().min(10, { message: "Phone number must be at least 10 digits." }).optional().or(z.literal('')),
-  invitationSource: z.enum(["Social Media", "Gospel TV"]).optional(),
-  doesServe: z.boolean({
-    required_error: "Please select whether you serve in any departments.",
-  }),
-  department: z.array(z.string()).optional(),
-  trainings: z.array(z.string()).min(1, { message: "Please select at least one training." }),
-}).refine((data) => {
-  if (data.doesServe && (!data.department || data.department.length === 0)) {
-    return false;
-  }
-  return true;
-}, {
-  message: "Please select at least one department if you serve.",
-  path: ["department"],
-});
 
-const departments = [
-  { label: "IT Team", value: "it" },
-  { label: "Anakazo", value: "anakazo" },
-  { label: "Follow up", value: "follow_up" },
-  { label: "Foundation teachers", value: "foundation_teachers" },
-  { label: "Art Ministry", value: "art" },
-  { label: "Media and Sound", value: "media" },
-  { label: "Children Ministry", value: "childeren" },
-  { label: "A.R.M.Y", value: "army" },
-  { label: "Ushers", value: "usher" },
-  { label: "Zoe Choir One", value: "zoe_one" },
-  { label: "Zoe Choir Two", value: "zoe_two" },
-  { label: "Zoe Choir Three", value: "zoe_three" },
-  { label: "Zoe Choir Four", value: "zoe_four" },
-  { label: "Zoe Choir Five", value: "zoe_five" },
-  // ... add more departments here
-]
-
-const trainings = [
-  { id: "restoration", label: "Restoration" },
-  { id: "foundation_one", label: "Foundation One" },
-  { id: "foundation_two", label: "Foundation Two" },
-  { id: "ministers_training", label: "Ministers Training" },
-  // ... add more trainings here
-]
 
 const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> }, object>((props, ref) => {
+  const t = useTranslations('churchInformation1');
   const { formData, updateFormData } = useFormContext();
+
+  const FormSchema = z.object({
+    savedDate: z.string().min(1, { message: t('errorMessages.savedDate') }),
+    savedChurch: z.string().min(1, { message: t('errorMessages.savedChurch') }),
+    inviterFullName: z.string().optional(),
+    inviterPhoneNumber: z.string().min(10, { message: t('errorMessages.inviterPhoneNumber') }).optional().or(z.literal('')),
+    invitationSource: z.enum(["Social Media", "Gospel TV"]).optional(),
+    doesServe: z.boolean({
+      required_error: t('errorMessages.doesServe'),
+    }),
+    department: z.array(z.string()).optional(),
+    trainings: z.array(z.string()).optional(),
+  }).refine((data) => {
+    if (data.doesServe && (!data.department || data.department.length === 0)) {
+      return false;
+    }
+    return true;
+  }, {
+    message: t('errorMessages.chooseDepartment'),
+    path: ["department"],
+  });
+
+
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
@@ -106,19 +87,52 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
     validateAndSave: async () => {
       const isValid = await form.trigger();
       if (isValid) {
-        updateFormData(2, form.getValues());
+        updateFormData(2, form.getValues() as ChurchInfo1);
       }
       return isValid;
     },
   }));
 
+  // Load saved data if it exists
   useEffect(() => {
-    if (formData[2]) {
-      Object.keys(formData[2]).forEach(key => {
-        form.setValue(key as any, formData[2][key]);
+    const step2Data = formData[2];
+    if (step2Data) {
+      Object.keys(step2Data).forEach(key => {
+        const fieldKey = key as keyof ChurchInfo1;
+        form.setValue(fieldKey, step2Data[fieldKey]);
       });
     }
-  }, [formData, form.setValue, form]);
+  }, [formData, form]);
+
+  const departments = [
+    { label: t('departments.it'), value: "it" },
+    { label: t('departments.anakazo'), value: "anakazo" },
+    { label: t('departments.followUp'), value: "follow_up" },
+    { label: t('departments.foundationTeachers'), value: "foundation_teachers" },
+    { label: t('departments.art'), value: "art" },
+    { label: t('departments.media'), value: "media" },
+    { label: t('departments.children'), value: "childeren_ministry" },
+    { label: t('departments.army'), value: "army" },
+    { label: t('departments.usher'), value: "usher" },
+    { label: t('departments.zoeOne'), value: "zoe_one" },
+    { label: t('departments.zoeTwo'), value: "zoe_two" },
+    { label: t('departments.zoeThree'), value: "zoe_three" },
+    { label: t('departments.zoeFour'), value: "zoe_four" },
+    { label: t('departments.zoeFive'), value: "zoe_five" },
+    { label: t('departments.music'), value: "musicians" },
+    { label: t('departments.prayer'), value: "prayer" },
+    { label: t('departments.coordinators'), value: "coordinators" },
+    { label: t('departments.agape'), value: "agape_cdministry" },
+    { label: t('departments.compassion'), value: "compassion" },
+    { label: t('departments.cleaning'), value: "cleaning_team" },
+  ];
+
+  const trainings = [
+    { id: "restoration", label: t('trainings.restoration') },
+    { id: "foundation_one", label: t('trainings.foundationOne') },
+    { id: "foundation_two", label: t('trainings.foundationTwo') },
+    { id: "ministers_training", label: t('trainings.ministersTraining') },
+  ];
 
   return (
     <Form {...form}>
@@ -133,12 +147,11 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
-                    When did you get saved?{" "}
-                    <span className="text-red-500">*</span>
+                    {t('labels.savedDate')} <span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Meskerem 10, 2005"
+                      placeholder={t('placeholders.savedDate')}
                       className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                       {...field}
                     />
@@ -153,12 +166,11 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
-                    Which Church did you get saved?{" "}
-                    <span className="text-red-500">*</span>
+                    {t('labels.savedChurch')} <span className="text-red-500">*</span>
                   </FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="Glorious Life Church"
+                      placeholder={t('placeholders.savedChurch')}
                       className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                       {...field}
                     />
@@ -169,7 +181,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
             />
           </div>
           <h2 className="md:text-lg text-sm pt-4 font-semibold text-gray-700">
-            Who invited you to GLC?
+            {t('labels.inviterSection')}
           </h2>{" "}
           <div className="pl-4">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:gap-10 md:gap-7 gap-5 pb-4">
@@ -179,11 +191,11 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-gray-700 font-semibold md:text-md text-sm">
-                      Full Name 
+                      {t('labels.inviterFullName')}
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Dawit Abraham"
+                        placeholder={t('placeholders.inviterFullName')}
                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                         {...field}
                       />
@@ -198,11 +210,11 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-gray-700 font-semibold md:text-md text-sm">
-                      Phone Number 
+                      {t('labels.inviterPhoneNumber')}
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="0911223344"
+                        placeholder={t('placeholders.inviterPhoneNumber')}
                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                         {...field}
                       />
@@ -218,7 +230,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-gray-700 font-semibold md:text-md text-sm">
-                    Invitation Source
+                    {t('labels.invitationSource')}
                   </FormLabel>
                   <FormControl>
                     <RadioGroup
@@ -236,7 +248,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                           </FormControl>
                         </div>
                         <FormLabel className="font-normal">
-                          Social Media
+                          {t('options.source.socialMedia')}
                         </FormLabel>
                       </FormItem>
                       <FormItem className="flex items-center space-x-2">
@@ -248,7 +260,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                             />
                           </FormControl>
                         </div>
-                        <FormLabel className="font-normal">Gospel TV</FormLabel>
+                        <FormLabel className="font-normal"> {t('options.source.gospelTV')}</FormLabel>
                       </FormItem>
                     </RadioGroup>
                   </FormControl>
@@ -266,8 +278,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
-                        Do you serve in any departments?{" "}
-                        <span className="text-red-500">*</span>
+                        {t('labels.doesServe')} <span className="text-red-500">*</span>
                       </FormLabel>
                       <div className="pl-4">
                       <FormControl>
@@ -291,7 +302,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                                 <RadioGroupItem value="true" />
                               </FormControl>
                             </div>
-                            <FormLabel className="font-normal">Yes</FormLabel>
+                            <FormLabel className="font-normal">{t('options.yesNo.yes')}</FormLabel>
                           </FormItem>
                           <FormItem className="flex items-center space-x-2">
                             <div className="flex items-center justify-center w-5 h-5 pt-2 ">
@@ -299,7 +310,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                                 <RadioGroupItem value="false" />
                               </FormControl>
                             </div>
-                            <FormLabel className="font-normal">No</FormLabel>
+                            <FormLabel className="font-normal">{t('options.yesNo.no')}</FormLabel>
                           </FormItem>
                         </RadioGroup>
                       </FormControl>
@@ -315,8 +326,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                 render={() => (
                   <FormItem>
                     <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
-                      Which trainings have you attended?{" "}
-                      <span className="text-red-500">*</span>
+                      {t('labels.trainings')} 
                     </FormLabel>
                     <div className="space-y-2 pl-4">
                       {trainings.map((item) => (
@@ -336,7 +346,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                                     onCheckedChange={(checked) => {
                                       return checked
                                         ? field.onChange([
-                                            ...field.value,
+                                            ...(field.value ?? []),
                                             item.id,
                                           ])
                                         : field.onChange(
@@ -368,8 +378,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
                     <FormLabel className="text-gray-700 font-semibold md:text-lg text-md">
-                      Which departments do you serve?{" "}
-                      <span className="text-red-500">*</span>
+                      {t('labels.departments')} <span className="text-red-500">*</span>
                     </FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -385,19 +394,19 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                             )}
                           >
                             {field.value && field.value.length > 0
-                              ? `${field.value.length} department${
-                                  field.value.length > 1 ? "s" : ""
-                                } selected`
-                              : "Select departments"}
+                              ? `${field.value.length} ${t('departmentLabel.department')}${
+                                  field.value.length > 1 ? t('departmentLabel.s') : ""
+                                } ${t('departmentLabel.selected')}`
+                              : t('placeholders.chooseDepartment')}
                             <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
                       <PopoverContent className="w-full p-0">
                         <Command>
-                          <CommandInput placeholder="Search department..." />
+                          <CommandInput placeholder={t('departmentLabel.search')} />
                           <CommandList>
-                            <CommandEmpty>No department found.</CommandEmpty>
+                            <CommandEmpty>{t('departmentLabel.noDepartment')}</CommandEmpty>
                             <CommandGroup>
                               {departments.map((department) => (
                                 <CommandItem
@@ -434,7 +443,7 @@ const ChurchInformation1 = forwardRef<{ validateAndSave: () => Promise<boolean> 
                       </PopoverContent>
                     </Popover>
                     <FormDescription>
-                      You can select multiple departments.
+                    {t('descriptions.departments')}
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

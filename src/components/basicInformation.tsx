@@ -25,25 +25,28 @@ import {
 } from "@/components/ui/select"
 import { useFormContext } from '@/utils/FormContext';
 import { useEffect } from "react"
+import { useTranslations } from 'next-intl';
+import { PersonalInfo } from "@/types/form";
 
-const FormSchema = z.object({
-  fullName: z.string().min(1, { message: "Full Name is required." }),
-  phoneNumber: z.string().min(10, { message: "Phone Number must be at least 10 digits." }),
-  city: z.string().min(1, { message: "City is required." }),
-  subCity: z.string().optional(),
-  educationStatus: z.string().optional(),
-  workStatus: z.string().optional(),
-  jobField: z.string().optional(),
-  companyName: z.string().optional(),
-  placeOfWork: z.string().optional(),
-  placeOfSchool: z.string().optional(),
-  fieldOfStudy: z.string().optional(),
-})
+
 
 
 const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean> }, object>((props, ref) => {
   const { formData, updateFormData } = useFormContext();
-  
+  const t = useTranslations('basicInformation');
+  const FormSchema = z.object({
+    fullName: z.string().min(1, { message:  t('errorMessages.fullName') }),
+    phoneNumber: z.string().min(10, { message:  t('errorMessages.phoneNumber') }),
+    city: z.string().min(1, { message:  t('errorMessages.city') }),
+    subCity: z.string().optional(),
+    educationStatus: z.string().optional(),
+    workStatus: z.string().optional(),
+    jobField: z.string().optional(),
+    companyName: z.string().optional(),
+    placeOfWork: z.string().optional(),
+    placeOfSchool: z.string().optional(),
+    fieldOfStudy: z.string().optional(),
+  })
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: formData[1] || {
@@ -65,20 +68,22 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
     validateAndSave: async () => {
       const isValid = await form.trigger();
       if (isValid) {
-        updateFormData(1, form.getValues());
+        updateFormData(1, form.getValues() as PersonalInfo);
       }
       return isValid;
     },
   }));
 
+  // Load saved data if it exists
   useEffect(() => {
-    // Load saved data if it exists
-    if (formData[1]) {
-      Object.keys(formData[1]).forEach(key => {
-        form.setValue(key as any, formData[1][key]);
+    const step1Data = formData[1];
+    if (step1Data) {
+      Object.keys(step1Data).forEach(key => {
+        const fieldKey = key as keyof PersonalInfo;
+        form.setValue(fieldKey, step1Data[fieldKey]);
       });
     }
-  }, [formData, form.setValue, form]); 
+  }, [formData, form]);
 
   
 
@@ -96,11 +101,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                  Full Name <span className="text-red-500">*</span>
+                  {t('labels.fullName')} <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Dawit Abraham Noah"
+                    placeholder={t('placeholders.fullName')}
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                     {...field}
                   />
@@ -116,11 +121,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                  Phone Number <span className="text-red-500">*</span>
+                  {t('labels.phoneNumber')} <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="0911223344"
+                    placeholder={t('placeholders.phoneNumber')}
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                     {...field}
                   />
@@ -136,11 +141,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                  City <span className="text-red-500">*</span>
+                  {t('labels.city')} <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Addis Ababa"
+                    placeholder={t('placeholders.city')}
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                     {...field}
                   />
@@ -156,11 +161,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                  Sub City
+                  {t('labels.subCity')}
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Akaki Kailty"
+                    placeholder={t('placeholders.subCity')}
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                     {...field}
                   />
@@ -178,7 +183,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                  Education Status 
+                  {t('labels.educationStatus')}
                 </FormLabel>
                 <Select
                   onValueChange={field.onChange}
@@ -186,15 +191,15 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 >
                   <FormControl>
                     <SelectTrigger className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md">
-                      <SelectValue placeholder="Select Education Status" />
+                      <SelectValue placeholder={t('placeholders.educationStatus')} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="Other">Other</SelectItem>
-                    <SelectItem value="High School">High School</SelectItem>
-                    <SelectItem value="Bachelor's">Bachelor</SelectItem>
-                    <SelectItem value="Master's">Masters</SelectItem>
-                    <SelectItem value="PhD">PhD</SelectItem>
+                    <SelectItem value="Other"> {t('options.educationStatus.other')}</SelectItem>
+                    <SelectItem value="High School"> {t('options.educationStatus.highSchool')}</SelectItem>
+                    <SelectItem value="Bachelor's"> {t('options.educationStatus.bachelors')}</SelectItem>
+                    <SelectItem value="Master's"> {t('options.educationStatus.masters')}</SelectItem>
+                    <SelectItem value="PhD"> {t('options.educationStatus.phd')}</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -208,7 +213,7 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                  Work Status
+                  {t('labels.workStatus')}
                 </FormLabel>
                 <Select
                   onValueChange={field.onChange}
@@ -216,14 +221,14 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 >
                   <FormControl>
                     <SelectTrigger className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md">
-                      <SelectValue placeholder="Select Work Status" />
+                      <SelectValue placeholder={t('placeholders.workStatus')} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="Employee">Employee</SelectItem>
-                    <SelectItem value="Self-Employed">Self-Employed</SelectItem>
-                    <SelectItem value="Unemployed">Unemployed</SelectItem>
-                    <SelectItem value="Student">Student</SelectItem>
+                    <SelectItem value="Employee">{t('options.workStatus.employee')}</SelectItem>
+                    <SelectItem value="Self-Employed">{t('options.workStatus.selfEmployed')}</SelectItem>
+                    <SelectItem value="Unemployed">{t('options.workStatus.unemployed')}</SelectItem>
+                    <SelectItem value="Student">{t('options.workStatus.student')}</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />
@@ -241,11 +246,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                      Where do you learn?
+                      {t('labels.placeOfSchool')}
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Addis ABaba University"
+                        placeholder={t('placeholders.placeOfSchool')}
                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                         {...field}
                       />
@@ -260,11 +265,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                      What are you studying?
+                      {t('labels.fieldOfStudy')}
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Field of Study"
+                        placeholder={t('placeholders.fieldOfStudy')}
                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                         {...field}
                       />
@@ -282,11 +287,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                      What do you work?
+                      {t('labels.jobField')}
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Civil Servant"
+                        placeholder={t('placeholders.jobField')}
                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                         {...field}
                       />
@@ -301,11 +306,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                      Where do you work?
+                      {t('labels.placeOfWork')}
                     </FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Municipal Office"
+                        placeholder={t('placeholders.placeOfWork')}
                         className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md"
                         {...field}
                       />
@@ -325,11 +330,11 @@ const BasicInformationForm = forwardRef<{ validateAndSave: () => Promise<boolean
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-gray-700 font-semibold sm:text-lg text-sm">
-                  Place of Work?
+                  {t('labels.placeOfWork')}
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Addis Ababa"
+                    placeholder= {t('placeholders.city')}
                     className="bg-gray-50 border border-gray-300 text-gray-900 rounded-md lg:w-[48%]"
                     {...field}
                   />

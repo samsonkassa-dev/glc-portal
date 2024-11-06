@@ -1,0 +1,212 @@
+{
+  "Home": {
+    "welcome": "Welcome to",
+    "glorious": "Glorious Life",
+    "church": "Church",
+    "portal": "Portal!",
+    "contact": "Contact the Office for any inquiries",
+    "register": "Register Here"
+  },
+
+
+  "Form": {
+    "steps": {
+      "1": "Basic Information",
+      "2": "Church Related Information One",
+      "3": "Church Related Information Two",
+      "4": "Successfully Finished!"
+    },
+    "processing": "Processing your registration...",
+    "success": {
+      "title": "Registered Successfully!",
+      "message": "Thank you for completing the form. Your registration has been received."
+    },
+    "buttons": {
+      "back": "Back",
+      "next": "Next",
+      "submit": "Submit"
+    },
+    "errorMessages": {
+      "validation": "Please make sure to fill in all required fields",
+      "submissionError":"Failed to submit form. Please try again.",
+      "netError":"Network error. Please check your internet connection and try again."
+    }
+  },
+
+
+  "basicInformation": {
+    "labels": {
+      "fullName": "Full Name",
+      "phoneNumber": "Phone Number",
+      "city": "City",
+      "subCity": "Sub City",
+      "educationStatus": "Education Status",
+      "workStatus": "Work Status",
+      "jobField": "What do you work?",
+      "companyName": "Where do you work?",
+      "placeOfWork": "Place of Work?",
+      "placeOfSchool": "Where do you learn?",
+      "fieldOfStudy": "What are you studying?"
+    },
+    "placeholders": {
+      "fullName": "Dawit Abraham Noah",
+      "phoneNumber": "0911223344",
+      "city": "Addis Ababa",
+      "subCity": "Akaki Kality",
+      "placeOfSchool": "Addis ABaba University",
+      "fieldOfStudy": "Field of Study",
+      "jobField": "Civil Servant",
+      "placeOfWork": "Municipal Office",
+      "educationStatus": "Select Education Status",
+      "workStatus": "Select Work Status"
+    },
+    "options": {
+      "educationStatus": {
+        "other": "Other",
+        "highSchool": "High School",
+        "bachelors": "Bachelor's",
+        "masters": "Master's",
+        "phd": "PhD"
+      },
+      "workStatus": {
+        "employee": "Employee",
+        "selfEmployed": "Self-Employed",
+        "unemployed": "Unemployed",
+        "student": "Student"
+      }
+
+    },
+    "errorMessages": {
+      "fullName": "Full name is required",
+      "phoneNumber": "Phone number is required",
+      "city":"City is required"
+  }
+  },
+
+
+  "churchInformation1": {
+    "labels": {
+      "savedDate": "When did you get saved?",
+      "savedChurch": "Which Church did you get saved?",
+      "inviterSection": "Who invited you to GLC?",
+      "inviterFullName": "Full Name",
+      "inviterPhoneNumber": "Phone Number",
+      "invitationSource": "Invitation Source",
+      "doesServe": "Do you serve in any departments?",
+      "trainings": "Which trainings have you attended?",
+      "departments": "Which departments do you serve?"
+    },
+    "placeholders": {
+      "savedDate": "Meskerem 10, 2005",
+      "savedChurch": "Glorious Life Church",
+      "inviterFullName": "Dawit Abraham",
+      "inviterPhoneNumber": "0911223344",
+      "chooseDepartment": "Select department"
+    },
+    "options": {
+      "source": {
+        "socialMedia": "Social Media",
+        "gospelTV": "Gospel TV"
+      },
+      "yesNo": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "trainings": {
+      "restoration": "Restoration",
+      "foundationOne": "Foundation One",
+      "foundationTwo": "Foundation Two",
+      "ministersTraining": "Ministers Training"
+    },
+    "departments": {
+      "it": "IT Team",
+      "anakazo": "Anakazo",
+      "followUp": "Follow up",
+      "foundationTeachers": "Foundation teachers",
+      "art": "Art Ministry",
+      "media": "Media and Sound",
+      "children": "Children Ministry",
+      "army": "A.R.M.Y",
+      "usher": "Ushers",
+      "zoeOne": "Zoe Choir One",
+      "zoeTwo": "Zoe Choir Two",
+      "zoeThree": "Zoe Choir Three",
+      "zoeFour": "Zoe Choir Four",
+      "zoeFive": "Zoe Choir Five",
+      "music": "Musicians",
+      "prayer": "Prayer Ministry",
+      "coordinators": "Coordinators",
+      "agape": "Agape CD Ministry",
+      "compassion": "Compassion Ministry",
+      "cleaning": "Cleaning & Beauty Team"
+    },
+    "descriptions": {
+      "departments": "You can select multiple departments."
+    },
+    "errorMessages": {
+      "savedDate": "Please enter the date you got saved",
+      "savedChurch": "Please enter the church you got saved in",
+      "inviterPhoneNumber": "Please enter a correct phone number",
+      "doesServe": "please select if you serve in any department",
+      "chooseDepartment": "Select at least one department you serve in"
+    },
+    "departmentLabel": {
+      "department": "department",
+      "selected": "selected",
+      "s": "s",
+      "noDepartment": "No department found",
+      "search": "Search department"
+    }
+  },
+
+
+
+  "churchInformation2": {
+    "labels": {
+      "maritalStatus": "Marital Status",
+      "ministryExperience": "Your Experience on Ministry before?",
+      "comments": "Comments",
+      "childrenAttendChurch": "Does your child come to church?",
+      "numberOfChildren": "Number of Children",
+      "childFullName": "Child {number} Full Name",
+      "childAge": "Child {number} Age",
+      "childImage": "Child {number} Image",
+      "userImage": "Upload your Image",
+      "child": "Child",
+      "fullName": "Full Name",
+      "age": "Age",
+      "image": "Image",
+      "upload": "Upload",
+      "change": "Change"
+
+    },
+    "options": {
+      "maritalStatus": {
+        "married": "Married",
+        "single": "Single",
+        "divorced": "Divorced",
+        "widow": "Widow"
+      },
+      "yesNo": {
+        "yes": "Yes",
+        "no": "No"
+      }
+    },
+    "buttons": {
+      "uploadImage": "Upload Image",
+      "changeImage": "Change Image"
+    },
+    "errorMessages": {
+      "nameOfChild": "Full name is required",
+      "ageOfChild": "Age must be a positive number",
+      "childImage": "Image is required",
+      "userImage": "User image is required",
+      "numberOfChildren": "please enter the details of your children",
+      "maritalStatus": "Please select your marital status"
+    }
+  }
+
+
+
+}
